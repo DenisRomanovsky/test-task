@@ -5,12 +5,12 @@ import {
     Tbody,
     Tr,
     Th,
-    Td,
     TableContainer,
   } from '@chakra-ui/react'
 import { buildUsersList } from '../services/users-list'
+import { ScoredUser } from './scored-user';
 
-export function ScoreList () {
+export function ScoredUsersList () {
     const usersList = buildUsersList();
 
     return (
@@ -18,17 +18,16 @@ export function ScoreList () {
     <Table variant='simple'>
     <Thead>
         <Tr>
-        <Th>Name</Th>
-        <Th>Score</Th>
+            <Th>Name</Th>
+            <Th>Score</Th>
+            <Th>Action</Th>
         </Tr>
     </Thead>
     <Tbody>
         {usersList.map((user) => {      
         return (
-            <Tr>
-                <Td> {user.name}</Td>
-                <Td> {user.scores[0]}</Td>
-            </Tr>) 
+            <ScoredUser key={user._id} user={user}></ScoredUser>
+            ) 
         })}
     </Tbody>
     </Table>
