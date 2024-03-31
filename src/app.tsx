@@ -10,7 +10,8 @@ import {
   H2,
 } from '@northlight/ui'
 import { palette } from '@northlight/tokens'
-import { ExcelDropzone, ExcelRow } from './excel-dropzone.jsx'
+import { ExcelDropzone, ExcelRow } from './components/excel-dropzone.jsx'
+import { ScoreList }  from './components/score-list.jsx'
 
 interface ExternalLinkProps {
   href: string,
@@ -64,6 +65,11 @@ export default function App () {
           </Box>
         </VStack>
       </HStack>
+      <VStack>
+        <br></br>
+        <H2>User Score List</H2>
+        <ScoreList></ScoreList>
+      </VStack>
     </Container>
   ) 
 }
