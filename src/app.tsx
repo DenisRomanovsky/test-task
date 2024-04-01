@@ -6,6 +6,7 @@ import { ExcelDropzone, ExcelRow } from './components/excel-dropzone.jsx'
 import { ScoredUsersList } from './components/scored-users-table.js'
 import { ScoreForm } from './components/score-form.js'
 import { buildUserList } from './services/users-list'
+import { addScoresFromExcel } from './services/users-list.js'
 
 interface ExternalLinkProps {
     href: string
@@ -24,8 +25,7 @@ const ExternalLink = ({ href, children }: ExternalLinkProps) => (
 
 export default function App() {
     function handleSheetData(data: ExcelRow[]) {
-        // replace this log with actual handling of the data
-        console.log(data)
+        addScoresFromExcel(setUserList, data)
     }
 
     const [userList, setUserList] = useState(buildUserList())

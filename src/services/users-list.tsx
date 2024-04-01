@@ -1,5 +1,6 @@
 import scores from '../scores'
 import users from '../users'
+import { ExcelRow } from '../components/excel-dropzone.jsx'
 
 export interface User {
     _id: number
@@ -46,7 +47,24 @@ function addUser(userList: User[], score: Score): User[] {
 }
 
 export function addScore(userList: User[], score: Score): User[] {
+    pushScore(userList, score)
+    return sortUserList(userList)
+}
+
+function pushScore(userList: User[], score: Score) {
     const user = userList.find((user) => user.name == score.name)
     user ? user.scores.push(score.value) : addUser(userList, score)
-    return sortUserList(userList)
+}
+
+export function addScoresFromExcel(
+    setUserList: (userList: User[]) => void,
+    data: ExcelRow[]
+) {
+    setUserList((userList) => {
+        const newUserList = [...userList]
+        data.forEach((score) =>
+            pushScore(newUserList, { name: score.name, value: score.score })
+        )
+        return sortUserList(newUserList)
+    })
 }

@@ -24,7 +24,7 @@ export function ScoreForm(props: ScoreFormProps) {
 
     return (
         <Form
-            initialValues={{ userName: '', userScore: '' }}
+            initialValues={{ userName: '', userScore: 0 }}
             onSubmit={handleScoreCreation}
         >
             <TextField
