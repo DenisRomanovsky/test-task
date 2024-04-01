@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode , useState} from 'react'
 import { Link } from '@chakra-ui/react'
 import {
   Container,
@@ -12,6 +12,8 @@ import {
 import { palette } from '@northlight/tokens'
 import { ExcelDropzone, ExcelRow } from './components/excel-dropzone.jsx'
 import { ScoredUsersList }  from './components/scored-users-table.js'
+import {ScoreForm} from './components/score-form.js'
+import { buildUserList } from './services/users-list'
 
 interface ExternalLinkProps {
   href: string,
@@ -25,6 +27,8 @@ export default function App () {
     // replace this log with actual handling of the data
     console.log(data)
   }
+
+  const [userList, setUserList] = useState(buildUserList());
 
   return (
     <Container maxW="6xl" padding="4">
@@ -65,11 +69,16 @@ export default function App () {
           </Box>
         </VStack>
       </HStack>
-      <VStack>
-        <br></br>
-        <H2>User Score List</H2>
-        <ScoredUsersList></ScoredUsersList>
-      </VStack>
+      <HStack>
+        <Box>
+          <br></br>
+          <H2>User Score List</H2>
+          <ScoredUsersList userList={userList}></ScoredUsersList>
+        </Box>
+        <Box>
+          <ScoreForm setUserList={setUserList}></ScoreForm>
+        </Box>
+      </HStack>
     </Container>
   ) 
 }

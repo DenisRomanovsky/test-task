@@ -6,12 +6,16 @@ import {
     Tr,
     Th,
     TableContainer,
-  } from '@chakra-ui/react'
-import { buildUsersList } from '../services/users-list'
+} from '@chakra-ui/react'
+import { User } from '../services/users-list'
 import { ScoredUser } from './scored-user';
 
-export function ScoredUsersList () {
-    const usersList = buildUsersList();
+export interface ScoredUsersProps {
+    userList: User[]
+}
+
+export function ScoredUsersList(props: ScoredUsersProps) {
+    const { userList } = props; 
 
     return (
     <TableContainer>
@@ -21,13 +25,12 @@ export function ScoredUsersList () {
             <Th>Name</Th>
             <Th>Score</Th>
             <Th>Action</Th>
+            <Th>Scores History</Th>
         </Tr>
     </Thead>
     <Tbody>
-        {usersList.map((user) => {      
-        return (
-            <ScoredUser key={user._id} user={user}></ScoredUser>
-            ) 
+        {userList.map((user) => {      
+            return (<ScoredUser key={user._id} user={user}></ScoredUser>)
         })}
     </Tbody>
     </Table>
