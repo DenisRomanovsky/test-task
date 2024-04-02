@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@chakra-ui/react'
 import { Form, TextField } from '@northlight/ui'
-import { User, addScore } from '../services/users-list'
+import { User, addScore } from '../services/user-list-manager'
 export interface ScoreFormProps {
     setUserList: (userList: User[]) => void
 }

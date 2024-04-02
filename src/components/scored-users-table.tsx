@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, Thead, Tbody, Tr, Th, TableContainer } from '@chakra-ui/react'
-import { User } from '../services/users-list'
+import { User } from '../services/user-list-manager'
 import { ScoredUser } from './scored-user'
 
 export interface ScoredUsersProps {

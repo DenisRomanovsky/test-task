@@ -5,8 +5,8 @@ import { palette } from '@northlight/tokens'
 import { ExcelDropzone, ExcelRow } from './components/excel-dropzone.jsx'
 import { ScoredUsersList } from './components/scored-users-table.js'
 import { ScoreForm } from './components/score-form.js'
-import { buildUserList } from './services/users-list'
-import { addScoresFromExcel } from './services/users-list.js'
+import { buildUserList } from './services/user-list-builder.js'
+import { addScoresFromExcel } from './services/user-list-manager.js'
 
 interface ExternalLinkProps {
     href: string

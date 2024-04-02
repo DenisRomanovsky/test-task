@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Tr, Td, Button } from '@chakra-ui/react'
-import { User } from '../services/users-list'
+import { User } from '../services/user-list-manager'
 
 export interface ScoredUserProps {
     user: User
