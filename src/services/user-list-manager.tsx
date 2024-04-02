@@ -22,10 +22,9 @@ function pushScore(userList: User[], score: Score) {
     user ? user.scores.push(score.value) : addUser(userList, score)
 }
 
-function addUser(userList: User[], score: Score): User[] {
+function addUser(userList: User[], score: Score) {
     const newId = userList.sort((a, b) => b._id - a._id)[0]._id + 1
     userList.push({ _id: newId, name: score.name, scores: [score.value] })
-    return userList
 }
 
 export function addScoresFromExcel(
